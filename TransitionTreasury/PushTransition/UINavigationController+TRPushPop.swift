@@ -15,7 +15,7 @@ public extension UINavigationController {
     public func tr_pushViewController(viewController: UIViewController, method: TransitionAnimationable, statusBarStyle: TRStatusBarStyle = .Default, completion: (() -> Void)? = nil) {
         let transitionDelegate = TRNavgationTransitionDelegate(method: method, status: .Push, gestureFor: viewController)
         transitionDelegate.completion = completion
-        viewController.tr_pushTransition = transitionDelegate
+        (viewController as! NavgationTransitionable).tr_pushTransition = transitionDelegate
         
         delegate = transitionDelegate
         transitionDelegate.previousStatusBarStyle = TRStatusBarStyle.CurrentlyTRStatusBarStyle()
